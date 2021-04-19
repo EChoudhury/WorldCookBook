@@ -1,24 +1,17 @@
-function loadJSON (url) {	
+window.onload = function() {
+	var queryString = location.search.substring(1);
+	let url = 'http://127.0.0.1:8000/recipe?ID='+queryString;
 	fetch(url)
 	.then(res => res.json())
 	.then((out) => {
 	  console.log(out);
-	  document.getElementById('RecipeName').innerHTML = out.title;
-	  document.getElementById('description').innerHTML = out.userId;
-	  document.getElementById('Region').innerHTML = out.completed;
-	  document.getElementById('Category').innerHTML = out.id;
+	  document.getElementById('Name').innerHTML = out.Name;
+	  document.getElementById('Description').innerHTML = out.Description;
+	  //document.getElementById('Date').innerHTML = out.CreatedAt;
+	  //document.getElementById('Country').innerHTML = out.Country;
+	  document.getElementById('Ingredients').innerHTML = out.Ingredients.split('_').join(' ');
+	  document.getElementById('Instructions').innerHTML = out.Instructions.split('_').join(' ');
 	})
 	.catch(err => { throw err });
-}
-
-window.onload = function() {
-	var queryString = location.search.substring(1);
-	var a = queryString.split("|");
-	var value1 = a[0];
-	var value2 = a[1];
-	document.getElementById('country').innerHTML = value1;
-	document.getElementById('dish').innerHTML = value2;
-	let url = 'https://jsonplaceholder.typicode.com/todos/1';
-	loadJSON(url);
 };
 
