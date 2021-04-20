@@ -6,7 +6,7 @@ window.onload = function() {
 	.then((out) => {
 	  console.log(out);
 	  document.getElementById('Name').innerHTML = out.Name;
-	  document.getElementById('Description').innerHTML = out.Description;
+	  document.getElementById('Description').innerHTML = out.Description.split('_').join(' ');;
 	  //document.getElementById('Date').innerHTML = out.CreatedAt;
 	  //document.getElementById('Country').innerHTML = out.Country;
 	  document.getElementById('Ingredients').innerHTML = out.Ingredients.split('_').join(' ');

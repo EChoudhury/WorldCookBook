@@ -119,3 +119,21 @@ function tableFromJson(code) {
 	.catch(err => { throw err });
 }
 
+function sendJSON() {
+	let xhr = new XMLHttpRequest();
+	let url = "http://127.0.0.1:8000/create";
+	var result = document.getElementById('recipe1');
+	xhr.open("POST", url, true);
+
+	xhr.setRequestHeader("Content-Type", "application/json");
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			result.innerHTML = this.responseText;
+		}
+	};
+
+	var data = JSON.stringify({"Name":"Brazilian Rice", "Description":"Wonderful original Brazilian rice! Great served with Brazilian filet mignon stroganoff.","Country":"BR","Instructions":"Heat oil in a saucepan over medium-low heat. Add onion and garlic; cook and stir until softened, about 5 minutes. Add rice and mix until clumps form.","Ingredients":"2 tablespoons olive oil, ¼ onion, diced 2 cloves garlic, minced, 1 cup rice, 2 cups water, 4 sprigs fresh cilantro, 1 teaspoon salt, 3 drops lemon juice"});
+
+	xhr.send(data);
+}
