@@ -35,6 +35,24 @@
   </head>
   <body class="bg-light">
     
+	<div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
+			role="dialog">
+			<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">WorldCookBook Recipe Submission Results</h5>
+					</div>
+					<div class="modal-body">
+						<p id='result'></p>
+						<a href="index.html" class="btn btn-primary btn-lg" type="button">Back to Map</a>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" onclick="closeModal()">Submit another recipe...</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
 <div class="container">
   <main>
     <div class="py-5 text-center">
@@ -44,9 +62,9 @@
 
     <div class="row g-5">
       <div class="col-md-12 col-lg-12">
-        <form class="needs-validation">
+        <form id="form">
           <div class="row g-3">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
               <label for="firstName" class="form-label">Recipe Name</label>
               <input type="text" class="form-control" id="Name" placeholder="" value="" required>
               <div class="invalid-feedback">
@@ -54,39 +72,46 @@
               </div>
             </div>
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Country</label>
-              <input type="text" class="form-control" id="Country" placeholder="US, EG, RU, etc.." value="" required>
+						<div class="col-sm-12">
+              <label for="firstName" class="form-label">Country</label>
+              <input type="text" class="form-control" id="Country" placeholder="US, EG, RU, etc..." value="" required>
               <div class="invalid-feedback">
-                Valid country name is required.
+                Valid country is required.
+              </div>
+            </div>
+						
+						<div class="col-sm-12">
+              <label for="firstName" class="form-label">Description</label>
+              <input type="text" class="form-control" id="Description" placeholder="Write a creative description here!" value="" required>
+              <div class="invalid-feedback">
+                Valid description is required.
               </div>
             </div>
 
-            <div class="col-12">
-              <label for="username" class="form-label">Description</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" id="Description" placeholder="Write a creative description here!" required>
+						<div class="col-sm-12">
+              <label for="firstName" class="form-label">Ingredients</label>
+              <input type="text" class="form-control" id="Ingredients" placeholder="1/2 cup of sugar, 1 TBSP salt, etc..." value="" required>
               <div class="invalid-feedback">
-                  Your description is required.
-                </div>
+                Valid ingredients are required.
               </div>
             </div>
 
-            <div class="col-12">
-              <label for="address" class="form-label">Ingredients</label>
-              <input type="text" class="form-control" id="Ingredients" placeholder="1/2 Cup of Sugar, 1 TBSP Salt, etc.." required>
+            <div class="col-sm-12">
+              <label for="firstName" class="form-label">Instructions</label>
+              <input type="text" class="form-control" id="Instructions" placeholder="1. Add salt, 2. Add sugar, etc..." value="" required>
               <div class="invalid-feedback">
-                Please enter your ingredients.
+                Valid instructions are required.
+              </div>
+            </div>
+
+						<div class="col-sm-12" style="display:none;">
+              <label for="firstName" class="form-label">Instructions</label>
+              <input type="text" class="form-control" id="Instions" placeholder="1. Add salt, 2. Add sugar, etc..." value="" required>
+              <div class="invalid-feedback">
+                Valid instructions are required.
               </div>
             </div>
             
-	    <div class="col-12">
-              <label for="address" class="form-label">Instructions</label>
-              <input type="text" class="form-control" id="Instructions" placeholder="1. Add Salt, 2. Add Sugar, etc.." required>
-              <div class="invalid-feedback">
-                Please enter your instructions.
-              </div>
-            </div>
 <!--
             <div class="col-md-5">
               <label for="country" class="form-label">Country</label>
@@ -101,9 +126,8 @@
           </div>
 -->
           <hr class="my-4">
-
-          <button class="w-100 btn btn-primary btn-lg" type="submit" onclick="sendJSON()">Submit</button>
         </form>
+					<button class="w-100 btn btn-primary btn-lg" onclick="sendJSON()">Submit</button>
       </div>
     </div>
   </main>
@@ -112,6 +136,6 @@
 
     <script src="create.js"></script>
 
-      <script src="form-validation.js"></script>
+     <!-- <script src="form-validation.js"></script> -->
   </body>
 </html>
